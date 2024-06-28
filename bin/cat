@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+read -r line
+printf '%s\n' "$line"
