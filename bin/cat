@@ -11,7 +11,7 @@ for file in "$@"; do
   if [[ "$file" = "-" ]] || [[ -z "$file" ]]; then
     infile=/dev/stdin
   else
-    infile="$1"
+    infile="$file"
   fi
 
   while IFS= read -r line; do
