@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-read -r line
-printf '%s\n' "$line"
+while read -r line; do
+  printf '%s\n' "$line"
+done
