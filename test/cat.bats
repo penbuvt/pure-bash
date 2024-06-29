@@ -40,3 +40,12 @@ teardown() {
 
   diff "${testdir}/in" "${testdir}/out"
 }
+
+@test "reads stdin for -" {
+  echo "asdf" >"${testdir}/in"
+  echo "zxcvbn" >>"${testdir}/in"
+
+  ./bin/cat - <"${testdir}/in" >"${testdir}/out"
+
+  diff "${testdir}/in" "${testdir}/out"
+}

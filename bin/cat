@@ -2,10 +2,10 @@
 
 infile=
 
-if [[ -n "$1" ]]; then
-  infile="$1"
-else
+if [[ "$1" = "-" ]] || [[ -z "$1" ]]; then
   infile=/dev/stdin
+else
+  infile="$1"
 fi
 
 while IFS= read -r line; do
