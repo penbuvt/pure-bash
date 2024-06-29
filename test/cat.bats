@@ -31,3 +31,12 @@ teardown() {
 
   diff "${testdir}/in" "${testdir}/out"
 }
+
+@test "reads file from first argument" {
+  echo "asdf" >"${testdir}/in"
+  echo "zxcvbn" >>"${testdir}/in"
+
+  ./bin/cat "${testdir}/in" >"${testdir}/out"
+
+  diff "${testdir}/in" "${testdir}/out"
+}

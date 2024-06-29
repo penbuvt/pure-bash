@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+infile=
+
+if [[ -n "$1" ]]; then
+  infile="$1"
+else
+  infile=/dev/stdin
+fi
+
 while IFS= read -r line; do
   printf '%s\n' "$line"
-done
+done <"$infile"
