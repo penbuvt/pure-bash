@@ -49,3 +49,16 @@ teardown() {
 
   diff "${testdir}/in" "${testdir}/out"
 }
+
+@test "reads multiple files" {
+  echo "asdf" >"${testdir}/in1"
+  echo "qwerty" >>"${testdir}/in2"
+  echo "zxcvbn" >>"${testdir}/in3"
+  echo "asdf" >"${testdir}/expected"
+  echo "qwerty" >>"${testdir}/expected"
+  echo "zxcvbn" >>"${testdir}/expected"
+
+  ./bin/cat "${testdir}/in1" "${testdir}/in2" "${testdir}/in3" >"${testdir}/out"
+
+  diff "${testdir}/expected" "${testdir}/out"
+}

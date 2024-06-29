@@ -2,12 +2,19 @@
 
 infile=
 
-if [[ "$1" = "-" ]] || [[ -z "$1" ]]; then
-  infile=/dev/stdin
-else
-  infile="$1"
+if (($# == 0)); then
+  # Default to reading stdin
+  set -- -
 fi
 
-while IFS= read -r line; do
-  printf '%s\n' "$line"
-done <"$infile"
+for file in "$@"; do
+  if [[ "$file" = "-" ]] || [[ -z "$file" ]]; then
+    infile=/dev/stdin
+  else
+    infile="$1"
+  fi
+
+  while IFS= read -r line; do
+    printf '%s\n' "$line"
+  done <"$infile"
+done
