@@ -23,3 +23,11 @@ teardown() {
 
   diff "${testdir}/in" "${testdir}/out"
 }
+
+@test "read lines starting with whitespace" {
+  echo "      alksjdfalskfda" >"${testdir}/in"
+
+  ./bin/cat <"${testdir}/in" >"${testdir}/out"
+
+  diff "${testdir}/in" "${testdir}/out"
+}
